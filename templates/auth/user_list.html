@@ -1,0 +1,27 @@
+<a href="{% url 'admin-add' %}">Tambah Admin</a>
+<table>
+    <tr>
+        <th>No</th>
+      <th>Nama depan</th>
+      <th>Nama belakang</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Action</th>
+    </tr>
+    {% for user in object_list %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{user.first_name}}</td>
+        <td>{{user.last_name}}</td>
+        <td>{{user.username}}</td>
+        <td><a href="{% url 'admin-reset' pk=user.pk %}">Reset Password</a></td>
+        <td><a href="{% url 'admin-delete' pk=user.pk %}">Hapus</a></td>
+    </tr>
+    {% empty %}
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+    {% endfor %}
+  </table>

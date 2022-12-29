@@ -1,0 +1,373 @@
+{# OPEN MODAL: UPDATE MODAL #} {% for obj in object_list%}
+<!-- Main modal -->
+<div
+	id="{{obj.id_mail}}"
+	tabindex="-1"
+	aria-hidden="true"
+	class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full bg-opacity-20"
+>
+	<div class="relative p-4 w-full max-w-md h-full md:h-auto">
+		<!-- Modal content -->
+		<div class="relative bg-slate-50 rounded-lg shadow">
+			<button
+				type="button"
+				class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+				data-modal-toggle="{{obj.id_mail}}"
+			>
+				<svg
+					aria-hidden="true"
+					class="w-5 h-5"
+					fill="currentColor"
+					viewBox="0 0 20 20"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						fill-rule="evenodd"
+						d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+						clip-rule="evenodd"
+					></path>
+				</svg>
+				<span class="sr-only">Close modal</span>
+			</button>
+			<div
+				class="py-6 px-6 lg:px-8"
+				style="height: 550px; overflow-y: scroll; top: 50%"
+			>
+				<h3
+					class="mb-4 text-xl font-medium text-slate-900 dark:text-white"
+				>
+					Perbaharui Data anda
+				</h3>
+				<form
+					class="space-y-6"
+					method="post"
+					enctype="multipart/form-data"
+					action="{% url 'incoming-mail-update' pk=obj.id %}"
+				>
+					<!-- No Surat Masuk -->
+					{% csrf_token %}
+					<div>
+						<label
+							for="noSuratAsal"
+							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+							>No Surat Masuk</label
+						>
+						<input
+							type="text"
+							name="id_enter"
+							id="noSuratMasuk"
+							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+							placeholder="12.010/DP-KM/IX/2019"
+							required
+							value="{{obj.id_enter}}"
+						/>
+					</div>
+
+					<!-- Tgl Surat Masuk -->
+					<div>
+						<label
+							for="tglAsal"
+							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+							>Tgl Surat Masuk</label
+						>
+						<input
+							type="date"
+							name="date_enter"
+							id="tglAsal"
+							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+							placeholder="12.010/DP-KM/IX/2019"
+							required
+							value="{{obj.date_enter|date:'Y-m-d'}}"
+						/>
+					</div>
+
+					{# No Surat Asal #}
+					<div>
+						<label
+							for="noSuratMasuk"
+							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+							>No Surat Asal</label
+						>
+						<input
+							type="text"
+							name="id_mail"
+							id="noSuratAsal"
+							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+							placeholder="12.010/DP-KM/IX/2019"
+							required
+							value="{{obj.id_mail}}"
+						/>
+					</div>
+
+					<!-- Tgl Surat Asal -->
+					<div>
+						<label
+							for="tglAsal"
+							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+							>Tgl Surat Asal</label
+						>
+						<input
+							type="date"
+							name="date"
+							id="tglAsal"
+							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+							placeholder="12.010/DP-KM/IX/2019"
+							required
+							value="{{obj.date|date:'Y-m-d'}}"
+						/>
+					</div>
+
+					<!-- Pengirim -->
+					<div>
+						<label
+							for="pengirim"
+							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+							>Pengirim</label
+						>
+						<input
+							type="text"
+							name="sender"
+							id="pengirim"
+							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+							placeholder="Dinas Kesehatan Kota Semarang"
+							required
+							value="{{obj.sender}}"
+						/>
+					</div>
+
+					<!-- Perihal -->
+					<div>
+						<label
+							for="perihal"
+							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+							>Perihal</label
+						>
+						<input
+							type="text"
+							name="regarding"
+							id="perihal"
+							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+							placeholder="Undangan"
+							required
+							value="{{obj.regarding}}"
+						/>
+					</div>
+
+					<!-- input file V1 -->
+					<div>
+						<label for="input-file" class="block">
+							Upload File
+						</label>
+						<input
+							type="file"
+							name="file_or_image"
+							id="input-file"
+							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white block w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
+							
+						/>
+					</div>
+
+					<!-- Button -->
+					<div class="flex flex-col gap-2">
+						<button
+							type="submit"
+							class="w-full text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+						>
+							Perbaharui Data
+						</button>
+					</div>
+				</form>
+				<!-- Danger Zone -->
+				<form
+					action="{% url 'incoming-mail-delete' pk=obj.id %}"
+					method="post"
+				>
+					{% csrf_token %}
+					<button
+						type="submit"
+						class="w-full mt-2 text-rose-900 hover:text-white hover:font-bold bg-rose-100 border-rose-400 border-2 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg text-sm px-5 py-2.5 text-center"
+					>
+						Hapus Data
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endfor %} {# END MODAL #} {# OPEN MODAL: ADD DATA MODAL #}
+<div
+	id="add-data-modal"
+	tabindex="-1"
+	aria-hidden="true"
+	class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full bg-opacity-20"
+>
+	<div class="relative p-4 w-full max-w-md h-full md:h-auto">
+		<!-- Modal content -->
+		<div class="relative bg-slate-50 rounded-lg shadow">
+			<button
+				type="button"
+				class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+				data-modal-toggle="add-data-modal"
+			>
+				<svg
+					aria-hidden="true"
+					class="w-5 h-5"
+					fill="currentColor"
+					viewBox="0 0 20 20"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						fill-rule="evenodd"
+						d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+						clip-rule="evenodd"
+					></path>
+				</svg>
+				<span class="sr-only cekbang">Close modal</span>
+			</button>
+			<div
+				class="py-6 px-6 lg:px-8"
+				style="height: 550px; overflow-y: scroll; top: 50%"
+			>
+				<h3
+					class="mb-4 text-xl font-medium text-slate-900 dark:text-white"
+				>
+					Tambah Data
+				</h3>
+				<!-- Formulir -->
+				<form
+					class="space-y-6"
+					method="post"
+					enctype="multipart/form-data"
+					action="{% url 'incoming-mail-create' %}"
+				>
+					{% csrf_token %}
+					<!-- No Surat Asal -->
+					<div>
+						<label
+							for="noSuratAsal"
+							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+							>No Surat Masuk</label
+						>
+						<input
+							type="text"
+							name="id_enter"
+							id="noSuratMasuk"
+							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+							placeholder="12.010/DP-KM/IX/2019"
+							required
+							value="{{obj.id_enter}}"
+						/>
+					</div>
+
+					<!-- Tgl Surat Masuk -->
+					<div>
+						<label
+							for="tglAsal"
+							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+							>Tgl Surat Masuk</label
+						>
+						<input
+							type="date"
+							name="date_enter"
+							id="tglAsal"
+							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+							placeholder="12.010/DP-KM/IX/2019"
+							required
+							value="{{obj.date_enter|date:'Y-m-d'}}"
+						/>
+					</div>
+					<div>
+						<label
+							for="noSuratAsal"
+							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+							>No Surat Asal</label
+						>
+						<input
+							type="text"
+							name="id_mail"
+							id="noSuratAsal"
+							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+							placeholder="12.010/DP-KM/IX/2019"
+							required
+						/>
+					</div>
+
+					<!-- Tgl Surat Asal -->
+					<div>
+						<label
+							for="tglAsal"
+							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+							>Tgl Surat Asal</label
+						>
+						<input
+							type="date"
+							name="date"
+							id="tglAsal"
+							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+							placeholder="12.010/DP-KM/IX/2019"
+							required
+						/>
+					</div>
+
+					<!-- Pengirim -->
+					<div>
+						<label
+							for="pengirim"
+							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+							>Pengirim</label
+						>
+						<input
+							type="text"
+							name="sender"
+							id="pengirim"
+							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+							placeholder="Dinas Kesehatan Kota Semarang"
+							required
+						/>
+					</div>
+
+					<!-- Perihal -->
+					<div>
+						<label
+							for="perihal"
+							class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+							>Perihal</label
+						>
+						<input
+							type="text"
+							name="regarding"
+							id="perihal"
+							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+							placeholder="Undangan"
+							required
+						/>
+					</div>
+
+					<!-- input file V1 -->
+					<div>
+						<label class="block" for="id_file_or_image"
+							>File or image:</label
+						>
+						<input
+							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white block w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
+							type="file"
+							name="file_or_image"
+							id="id_file_or_image"
+						/>
+					</div>
+
+					<!-- Button -->
+					<div class="flex flex-col gap-2">
+						<button
+							type="submit"
+							class="w-full text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+						>
+							Tambah Data
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{# END MODAL #}

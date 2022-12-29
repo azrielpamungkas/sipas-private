@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Littera Lapan - Arsip surat SMKN 8 Semarang</title>
+		<!-- CSS -->
+		<link rel="stylesheet" href="css/output.css" />
+		<link rel="stylesheet" href="css/tambahan.css" />
+		<!-- Flowbite -->
+		<!-- <link rel="stylesheet" href="css/flowbite.min.css" /> -->
+		<!-- <link rel="shortcut icon" href="asset/favicon.png" type="image/x-icon" /> -->
+	</head>
+	<body>
+		<div class="block md:flex max-w-screen-2xl mx-auto">
+			<!-- Component Sidebar -->
+			<div
+				class="md:flex flex-col md:flex-row md:min-h-screen w-full md:w-64 px-5 md:px-2 md:py-8"
+			>
+				<div
+					@click.away="open = false"
+					class="flex flex-col w-full md:w-60 text-stone-700 bg-white dark-mode:text-stone-200 dark-mode:bg-gray-800 flex-shrink-0"
+					x-data="{ open: false }"
+				>
+					<!-- Header pada Sidebar -->
+					<div
+						class="flex-shrink-0 px-0 py-4 md:px-4 flex flex-row items-center justify-between"
+					>
+						<div class="block md:text-center w-full py-2">
+							<a
+								href="#"
+								class="text-xl font-semibold tracking-custom text-indigo-700 rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline"
+							>
+								<!-- Logo pada tampilan Tablet -->
+								<img
+									src="asset/favicon.png"
+									class="w-16 hidden md:block lg:hidden mx-auto"
+								/>
+								<!-- Kata kata -->
+								<p class="md:hidden lg:block">Littera Lapan</p>
+							</a>
+							<!-- <hr class="bg-red w-full"> -->
+						</div>
+						<button
+							class="rounded-lg md:hidden focus:outline-none focus:shadow-outline"
+							@click="open = !open"
+						>
+							<svg fill="currentColor" viewBox="0 0 20 20" class="w-7 h-7">
+								<path
+									x-show="!open"
+									fill-rule="evenodd"
+									d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+									clip-rule="evenodd"
+								></path>
+								<path
+									x-show="open"
+									fill-rule="evenodd"
+									d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+									clip-rule="evenodd"
+								></path>
+							</svg>
+						</button>
+						<!-- <hr class="text-stone-400"> -->
+						<!-- Ini Garis -->
+					</div>
+					<!-- Menu -->
+					<nav
+						:class="{'flex': open, 'hidden': !open}"
+						class="flex flex-grow md:flex flex-col px-4 pb-4 md:pb-0 md:gap-1 md:overflow-y-auto"
+					>
+						<!-- Dashboard -->
+						<a
+							class="flex gap-2 px-6 py-3 mt-2 text-sm font-semibold text-stone-500 bg-transparent rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-indigo-100 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-stone-200 hover:text-stone-700 focus:text-stone-800 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+							href="../index.html"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-5 w-5"
+								viewBox="0 0 20 20"
+								fill="currentColor"
+							>
+								<path
+									d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+								/>
+							</svg>
+							<p class="block md:hidden lg:block">Dashboard</p>
+						</a>
+						<!-- Surat Masuk -->
+						<a
+							class="flex gap-2 px-6 py-3 mt-2 text-sm font-semibold text-stone-500 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-indigo-100 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-stone-200 hover:text-stone-700 focus:text-stone-800 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+							href="../surat-masuk/index.html"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-5 w-5"
+								viewBox="0 0 20 20"
+								fill="currentColor"
+							>
+								<path
+									d="M3 3a1 1 0 000 2h11a1 1 0 100-2H3zM3 7a1 1 0 000 2h7a1 1 0 100-2H3zM3 11a1 1 0 100 2h4a1 1 0 100-2H3zM15 8a1 1 0 10-2 0v5.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L15 13.586V8z"
+								/>
+							</svg>
+							<p class="block md:hidden lg:block">Surat Masuk</p>
+						</a>
+						<!-- Surat Keluar -->
+						<a
+							class="flex gap-2 px-6 py-3 mt-2 text-sm font-semibold text-stone-500 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-indigo-100 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-stone-200 hover:text-stone-700 focus:text-stone-800 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+							href="../surat-keluar/index.html"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-5 w-5"
+								viewBox="0 0 20 20"
+								fill="currentColor"
+							>
+								<path
+									d="M3 3a1 1 0 000 2h11a1 1 0 100-2H3zM3 7a1 1 0 000 2h5a1 1 0 000-2H3zM3 11a1 1 0 100 2h4a1 1 0 100-2H3zM13 16a1 1 0 102 0v-5.586l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 101.414 1.414L13 10.414V16z"
+								/>
+							</svg>
+							<p class="block md:hidden lg:block">Surat Keluar</p>
+						</a>
+						<!-- Administrator -->
+						<a
+							class="flex gap-2 px-6 py-3 mt-2 text-sm font-semibold text-stone-200 bg-indigo-700 rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-indigo-100 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-stone-200 hover:text-stone-700 focus:text-stone-800 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+							href="index.html"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-5 w-5"
+								viewBox="0 0 20 20"
+								fill="currentColor"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zM4 4h3a3 3 0 006 0h3a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm2.5 7a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm2.45 4a2.5 2.5 0 10-4.9 0h4.9zM12 9a1 1 0 100 2h3a1 1 0 100-2h-3zm-1 4a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1z"
+									clip-rule="evenodd"
+								/>
+							</svg>
+							<p class="block md:hidden lg:block">Administrator</p>
+						</a>
+
+						<!-- logout -->
+						<a
+							data-modal-toggle="logout-modal"
+							class="flex gap-2 px-6 py-3 mt-2 text-sm font-semibold text-stone-500 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-indigo-100 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-stone-200 hover:text-stone-700 focus:text-stone-800 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+							href="#"
+							aria-hidden="true"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-6 w-6"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+								/>
+							</svg>
+							<p class="block md:hidden lg:block">Log Out</p>
+						</a>
+					</nav>
+				</div>
+				<!-- JavaScript -->
+				<script
+					src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+					defer
+				></script>
+			</div>
+
+			<!-- LOgout Modal -->
+
+			<div
+				id="logout-modal"
+				tabindex="-1"
+				aria-hidden="true"
+				class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full bg-opacity-20"
+			>
+				<div class="relative p-4 w-full max-w-md h-full md:h-auto">
+					<!-- Modal content -->
+					<div class="relative bg-slate-50 rounded-lg shadow">
+						<button
+							type="button"
+							class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+							data-modal-toggle="logout-modal"
+						>
+							<svg
+								aria-hidden="true"
+								class="w-5 h-5"
+								fill="currentColor"
+								viewBox="0 0 20 20"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+									clip-rule="evenodd"
+								></path>
+							</svg>
+							<span class="sr-only cekbang">Close modal</span>
+						</button>
+						<div class="py-6 px-6 lg:px-8">
+							<h3
+								class="mb-4 text-xl font-medium text-slate-900 dark:text-white"
+							>
+								Anda yakin ingin Keluar?
+							</h3>
+							<!-- Formulir -->
+							<form class="space-y-6" action="#">
+								<div class="flex gap-2">
+									<!-- Tidak -->
+									<button
+										type="button"
+										class="w-full text-white bg-rose-700 hover:bg-rose-600 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+									>
+										Tidak
+									</button>
+
+									<!-- Ya -->
+									<button
+										type="button"
+										class="w-full text-slate-700 bg-white hover:bg-rose-600 hover:text-white hover:border-none border-rose-300 border-2 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+									>
+										Ya
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- component  Table-->
+			<div class="antialiased h-screen w-full">
+				<!-- CSS Tambahan -->
+				<link
+					rel="stylesheet"
+					href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+				/>
+				<script
+					src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
+					defer
+				></script>
+				<style>
+					[x-cloak] {
+						display: none;
+					}
+
+					[type="checkbox"] {
+						box-sizing: border-box;
+						padding: 0;
+					}
+
+					.form-checkbox {
+						-webkit-appearance: none;
+						-moz-appearance: none;
+						appearance: none;
+						-webkit-print-color-adjust: exact;
+						color-adjust: exact;
+						display: inline-block;
+						vertical-align: middle;
+						background-origin: border-box;
+						-webkit-user-select: none;
+						-moz-user-select: none;
+						-ms-user-select: none;
+						user-select: none;
+						flex-shrink: 0;
+						color: currentColor;
+						background-color: #fff;
+						border-color: #e2e8f0;
+						border-width: 1px;
+						border-radius: 0.25rem;
+						height: 1.2em;
+						width: 1.2em;
+					}
+
+					.form-checkbox:checked {
+						background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
+						border-color: transparent;
+						background-color: currentColor;
+						background-size: 100% 100%;
+						background-position: center;
+						background-repeat: no-repeat;
+					}
+				</style>
+
+				<div class="container mx-auto py-6 px-4" x-data="datatables()" x-cloak>
+					<!-- Heading -->
+					<h1 class="text-3xl md:py-4 border-b mb-10">Administrator</h1>
+
+					<!-- popup Row Selected -->
+					<div
+						x-show="selectedRows.length"
+						class="bg-indigo-100 fixed top-0 left-0 right-0 z-40 w-full shadow"
+					>
+						<div class="container mx-auto px-4 py-4">
+							<div class="flex md:items-center">
+								<div class="mr-4 flex-shrink-0">
+									<svg
+										class="h-8 w-8 text-indigo-600"
+										viewBox="0 0 20 20"
+										fill="currentColor"
+									>
+										<path
+											fill-rule="evenodd"
+											d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+											clip-rule="evenodd"
+										/>
+									</svg>
+								</div>
+								<div
+									x-html="selectedRows.length + ' rows are selected'"
+									class="text-indigo-800 text-lg"
+								></div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Kolom paling atas (search, filter) -->
+					<div class="mb-4 flex justify-between items-center gap-4">
+						<div class="flex-1 pr-4">
+							<div class="relative md:w-1/3">
+								<input
+									type="search"
+									class="w-full pl-10 pr-4 py-2 rounded-lg shadow focus:outline-none focus:shadow-outline text-gray-600 font-medium border-none"
+									placeholder="Cari Surat disini..."
+								/>
+								<!-- KOlom SEarch -->
+								<div class="absolute top-0 left-0 inline-flex items-center p-2">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="w-6 h-6 text-gray-400"
+										viewBox="0 0 24 24"
+										stroke-width="2"
+										stroke="currentColor"
+										fill="none"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<rect
+											x="0"
+											y="0"
+											width="24"
+											height="24"
+											stroke="none"
+										></rect>
+										<circle cx="10" cy="10" r="7" />
+										<line x1="21" y1="21" x2="15" y2="15" />
+									</svg>
+								</div>
+							</div>
+						</div>
+
+						<!-- Tambah -->
+						<div>
+							<div
+								data-modal-toggle="add-data-modal"
+								class="shadow rounded-lg flex bg-indigo-700 text-white rounded-md"
+							>
+								<span class="text-slate-100 px-3 py-3 flex items-center">
+									<button href="" class="inline-flex gap-2" type="button">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 24 24"
+											fill="currentColor"
+											class="w-4 h-2/5 my-auto"
+										>
+											<path
+												fill-rule="evenodd"
+												d="M12 2.25a.75.75 0 01.75.75v8.25H21a.75.75 0 010 1.5h-8.25V21a.75.75 0 01-1.5 0v-8.25H3a.75.75 0 010-1.5h8.25V3a.75.75 0 01.75-.75z"
+												clip-rule="evenodd"
+											/>
+										</svg>
+
+										<p class="hidden md:block text-sm">Tambah Admin</p>
+									</button>
+								</span>
+							</div>
+						</div>
+
+						<!-- Filter -->
+						<div>
+							<div class="shadow rounded-lg flex">
+								<div class="relative">
+									<button
+										@click.prevent="open = !open"
+										class="rounded-lg inline-flex items-center bg-white hover:text-slate-700 focus:outline-none focus:shadow-outline text-gray-500 font-semibold py-2 px-2 md:px-4"
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											class="w-6 h-6 md:hidden"
+											viewBox="0 0 24 24"
+											stroke-width="2"
+											stroke="currentColor"
+											fill="none"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										>
+											<rect
+												x="0"
+												y="0"
+												width="24"
+												height="24"
+												stroke="none"
+											></rect>
+											<path
+												d="M5.5 5h13a1 1 0 0 1 0.5 1.5L14 12L14 19L10 16L10 12L5 6.5a1 1 0 0 1 0.5 -1.5"
+											/>
+										</svg>
+										<span class="hidden md:block">Display</span>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											class="w-5 h-5 ml-1"
+											width="24"
+											height="24"
+											viewBox="0 0 24 24"
+											stroke-width="2"
+											stroke="currentColor"
+											fill="none"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										>
+											<rect
+												x="0"
+												y="0"
+												width="24"
+												height="24"
+												stroke="none"
+											></rect>
+											<polyline points="6 9 12 15 18 9" />
+										</svg>
+									</button>
+
+									<div
+										x-show="open"
+										@click.away="open = false"
+										class="z-40 absolute top-0 right-0 w-40 bg-white rounded-lg shadow-lg mt-12 -mr-1 block py-1 overflow-hidden"
+									>
+										<template x-for="heading in headings">
+											<label
+												class="flex justify-start items-center text-truncate hover:bg-gray-100 px-4 py-2"
+											>
+												<div class="text-indigo-600 mr-3">
+													<input
+														type="checkbox"
+														class="form-checkbox focus:outline-none focus:shadow-outline"
+														checked
+														@click="toggleColumn(heading.key)"
+													/>
+												</div>
+												<div
+													class="select-none text-gray-700"
+													x-text="heading.value"
+												></div>
+											</label>
+										</template>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- add-data-modal -->
+					<div
+						id="add-data-modal"
+						tabindex="-1"
+						aria-hidden="true"
+						class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full bg-opacity-20"
+					>
+						<div class="relative p-4 w-full max-w-md h-full md:h-auto">
+							<!-- Modal content -->
+							<div class="relative bg-slate-50 rounded-lg shadow">
+								<button
+									type="button"
+									class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+									data-modal-toggle="add-data-modal"
+								>
+									<svg
+										aria-hidden="true"
+										class="w-5 h-5"
+										fill="currentColor"
+										viewBox="0 0 20 20"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											fill-rule="evenodd"
+											d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+											clip-rule="evenodd"
+										></path>
+									</svg>
+									<span class="sr-only cekbang">Close modal</span>
+								</button>
+								<div class="py-6 px-6 lg:px-8">
+									<h3
+										class="mb-4 text-xl font-medium text-slate-900 dark:text-white"
+									>
+										Tambah Data
+									</h3>
+									<!-- Formulir -->
+									<form class="space-y-6" action="#">
+										<!-- Nama Depan -->
+										<div>
+											<label
+												for="namaDepan"
+												class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+												>Nama Depan</label
+											>
+											<input
+												type="text"
+												name="namaDepan"
+												id="namaDepan"
+												class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+												placeholder="Nama Depanmu"
+												required
+											/>
+										</div>
+
+										<!-- Tgl Surat Asal -->
+										<div>
+											<label
+												for="namaBelakang"
+												class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+												>Tgl Surat Asal</label
+											>
+											<input
+												type="date"
+												name="namaBelakang"
+												id="namaBelakang"
+												class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+												placeholder="Nama Depanmu"
+												required
+											/>
+										</div>
+
+										<!-- adminUsername -->
+										<div>
+											<label
+												for="adminUsername"
+												class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+												>Username</label
+											>
+											<input
+												type="text"
+												name="adminUsername"
+												id="adminUsername"
+												class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+												placeholder="adminsebastian"
+												required
+											/>
+										</div>
+
+										<!-- adminPassword -->
+										<div>
+											<label
+												for="adminPassword"
+												class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+												>Password</label
+											>
+											<input
+												type="text"
+												name="adminPassword"
+												id="adminPassword"
+												class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+												placeholder="*******"
+												required
+											/>
+										</div>
+
+										<!-- input file V1 -->
+										<div>
+											<label for="input-file" class="block">
+												Upload File
+											</label>
+											<input
+												type="file"
+												name="input-file"
+												id="input-file"
+												class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white block w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
+											/>
+										</div>
+
+										<!-- Button -->
+										<div class="flex flex-col gap-2">
+											<button
+												type="submit"
+												class="w-full text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+											>
+												Tambah Data
+											</button>
+
+											<!-- Danger Zone
+											<button
+												type="button"
+												class="w-full text-rose-800 hover:text-white hover:font-bold bg-rose-100 border-rose-700 border-2 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg text-sm px-5 py-2.5 text-center"
+											>
+												Hapus Data
+											</button> -->
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Table -->
+					<div
+						class="overflow-x-auto bg-white rounded-lg shadow overflow-y-auto relative"
+					>
+						<table
+							class="border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative"
+						>
+							<!-- Table Heading - Judul ygy -->
+							<thead>
+								<tr class="text-left">
+									<th
+										class="py-2 px-2 sticky top-0 border-b border-gray-200 bg-gray-100"
+									>
+										<label
+											class="text-indigo-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer"
+										>
+											<input
+												type="checkbox"
+												class="form-checkbox focus:outline-none focus:shadow-outline"
+												@click="selectAllCheckbox($event);"
+											/>
+										</label>
+									</th>
+									<template x-for="heading in headings">
+										<th
+											class="bg-gray-100 sticky top-0 border-b border-gray-200 px-3 py-2 text-gray-600 font-bold tracking-custom uppercase text-xs"
+											x-text="heading.value"
+											:x-ref="heading.key"
+											:class="{ [heading.key]: true }"
+										></th>
+									</template>
+								</tr>
+							</thead>
+							<!-- Table Body -->
+							<tbody>
+								<template x-for="user in users" :key="user.namaDepan">
+									<tr>
+										<td class="border-dashed border-t border-gray-200 px-2">
+											<label
+												class="text-indigo-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer"
+											>
+												<input
+													type="checkbox"
+													class="form-checkbox rowCheckbox focus:outline-none focus:shadow-outline"
+													:name="user.namaDepan"
+													@click="getRowDetail($event, user.namaDepan)"
+												/>
+											</label>
+										</td>
+
+										<!-- Nama Depan -->
+										<td
+											class="border-dashed border-t border-gray-200 namaDepan"
+										>
+											<span
+												class="text-gray-700 px-3 py-3 flex items-center"
+												x-text="user.namaDepan"
+											></span>
+										</td>
+
+										<!-- TGL Surat Asal -->
+										<td
+											class="border-dashed border-t border-gray-200 namaBelakang"
+										>
+											<span
+												class="text-gray-700 px-3 py-3 flex items-center"
+												x-text="user.namaBelakang"
+											></span>
+										</td>
+										<!-- Email Address -->
+										<td
+											class="border-dashed border-t border-gray-200 emailAddress"
+										>
+											<span
+												class="text-gray-700 px-3 py-3 flex items-center"
+												x-text="user.emailAddress"
+											></span>
+										</td>
+
+										<!-- adminUsername -->
+										<td
+											class="border-dashed border-t border-gray-200 adminUsername"
+										>
+											<span
+												class="text-gray-700 px-3 py-3 flex items-center"
+												x-text="user.adminUsername"
+											></span>
+										</td>
+
+										<!-- adminPassword -->
+										<td
+											class="border-dashed border-t border-gray-200 blankSpace"
+										>
+											<span class="text-gray-700 px-3 py-3 flex items-center">
+												<button
+													href=""
+													class="hover:underline text-blue-600"
+													type="button"
+													data-modal-toggle="resetpw-modal"
+												>
+													Reset Password
+												</button>
+											</span>
+										</td>
+
+										<!-- Edit - Popup Modal -->
+										<td
+											class="border-dashed border-t border-gray-200 blankSpace"
+										>
+											<span class="text-gray-700 px-3 py-3 flex items-center">
+												<button
+													href=""
+													class="hover:underline text-blue-600"
+													type="button"
+													data-modal-toggle="authentication-modal"
+												>
+													edit
+												</button>
+											</span>
+										</td>
+									</tr>
+								</template>
+							</tbody>
+						</table>
+						<!-- Main modal -->
+						<div
+							id="authentication-modal"
+							tabindex="-1"
+							aria-hidden="true"
+							class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full bg-opacity-20"
+						>
+							<div class="relative p-4 w-full max-w-md h-full md:h-auto">
+								<!-- Modal content -->
+								<div class="relative bg-slate-50 rounded-lg shadow">
+									<button
+										type="button"
+										class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+										data-modal-toggle="authentication-modal"
+									>
+										<svg
+											aria-hidden="true"
+											class="w-5 h-5"
+											fill="currentColor"
+											viewBox="0 0 20 20"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<path
+												fill-rule="evenodd"
+												d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+												clip-rule="evenodd"
+											></path>
+										</svg>
+										<span class="sr-only">Close modal</span>
+									</button>
+									<div class="py-6 px-6 lg:px-8">
+										<h3
+											class="mb-4 text-xl font-medium text-slate-900 dark:text-white"
+										>
+											Perbaharui Data anda
+										</h3>
+										<form class="space-y-6" action="#">
+											<!-- Nama Depan -->
+											<div>
+												<label
+													for="namaDepan"
+													class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+													>Nama Depan</label
+												>
+												<input
+													type="text"
+													name="namaDepan"
+													id="namaDepan"
+													class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+													placeholder="Nama Depanmu"
+													required
+												/>
+											</div>
+
+											<!-- Tgl Surat Asal -->
+											<div>
+												<label
+													for="namaBelakang"
+													class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+													>Nama Belakang</label
+												>
+												<input
+													type="text"
+													name="namaBelakang"
+													id="namaBelakang"
+													class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+													placeholder="Nama Belakangmu"
+													required
+												/>
+											</div>
+
+											<!-- adminUsername -->
+											<div>
+												<label
+													for="adminUsername"
+													class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+													>Username</label
+												>
+												<input
+													type="text"
+													name="adminUsername"
+													id="adminUsername"
+													class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+													placeholder="adminsebastian"
+													required
+												/>
+											</div>
+
+											<!-- input file V1 -->
+											<div>
+												<label for="input-file" class="block">
+													Upload File
+												</label>
+												<input
+													type="file"
+													name="input-file"
+													id="input-file"
+													class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white block w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
+												/>
+											</div>
+
+											<!-- Button -->
+											<div class="flex flex-col gap-2">
+												<button
+													type="submit"
+													class="w-full text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+												>
+													Perbaharui Data
+												</button>
+
+												<!-- Danger Zone -->
+												<button
+													type="button"
+													class="w-full text-rose-900 hover:text-white hover:font-bold bg-rose-100 border-rose-400 border-2 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg text-sm px-5 py-2.5 text-center"
+												>
+													Hapus Data
+												</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- resetpw modal -->
+						<div
+							id="resetpw-modal"
+							tabindex="-1"
+							aria-hidden="true"
+							class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full bg-opacity-20"
+						>
+							<div class="relative p-4 w-full max-w-md h-full md:h-auto">
+								<!-- Modal content -->
+								<div class="relative bg-slate-50 rounded-lg shadow">
+									<button
+										type="button"
+										class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+										data-modal-toggle="resetpw-modal"
+									>
+										<svg
+											aria-hidden="true"
+											class="w-5 h-5"
+											fill="currentColor"
+											viewBox="0 0 20 20"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<path
+												fill-rule="evenodd"
+												d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+												clip-rule="evenodd"
+											></path>
+										</svg>
+										<span class="sr-only">Close modal</span>
+									</button>
+									<div class="py-6 px-6 lg:px-8">
+										<h3
+											class="mb-4 text-xl font-medium text-slate-900 dark:text-white"
+										>
+											Perbaharui Kata Sandi
+										</h3>
+										<form class="space-y-6" action="#">
+
+											<!-- Password -->
+											<div>
+												<label
+													for="adminPassword"
+													class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+													>Password Baru</label
+												>
+												<input
+													type="password"
+													name="adminPassword"
+													id="adminPassword"
+													class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+													placeholder="*******"
+													required
+												/>
+											</div>
+
+											<!-- Password -->
+											<div>
+												<label
+													for="adminPassword"
+													class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+													>Konfirmasi Password Baru</label
+												>
+												<input
+													type="password"
+													name="adminPassword"
+													id="adminPassword"
+													class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+													placeholder="*******"
+													required
+												/>
+											</div>
+
+											<!-- Button -->
+											<div class="flex flex-col gap-2">
+												<button
+													type="submit"
+													class="w-full text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+												>
+													Ubah Password
+												</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<script src="css/flowbite.js"></script>
+					</div>
+				</div>
+
+				<script>
+					function datatables() {
+						return {
+							headings: [
+								{
+									key: "namaDepan",
+									value: "Nama Depan",
+								},
+								{
+									key: "namaBelakang",
+									value: "Nama Belakang",
+								},
+								{
+									key: "emailAddress",
+									value: "Email",
+								},
+								{
+									key: "adminUsername",
+									value: "Username",
+								},
+								// {
+								// 	key: "adminPassword",
+								// 	value: "Password",
+								// },
+
+								// {
+								// 	key: "blankSpace",
+								// 	value: " ",
+								// },
+							],
+							users: [
+								{
+									namaDepan: "Almira",
+									namaBelakang: "Furry",
+									emailAddress: "ctosh0@github.com",
+									adminUsername: "almirafury",
+									// adminPassword: "*******",
+									// blankSpace: "edit",
+								},
+								{
+									namaDepan: "Almira",
+									namaBelakang: "Furry",
+									emailAddress: "bdzeniskevich1@hostgator.com",
+									adminUsername: "adminsebastian",
+									// adminPassword: "*******",
+									// blankSpace: "edit",
+								},
+								{
+									namaDepan: "Almira",
+									namaBelakang: "Furry",
+									emailAddress: "ibotler2@gmpg.org",
+									adminUsername: "admin1",
+									// adminPassword: "*******",
+									// blankSpace: "edit",
+								},
+								{
+									namaDepan: "Almira",
+									namaBelakang: "Furry",
+									emailAddress: "jklosges3@amazon.de",
+									adminUsername: "admin2",
+									// adminPassword: "*******",
+									// blankSpace: "502-438-7799",
+								},
+								{
+									namaDepan: "Almira",
+									namaBelakang: "Furry",
+									emailAddress: "fdiclaudio4@phoca.cz",
+									adminUsername: "admin3",
+									// adminPassword: "*******",
+									// blankSpace: "265-448-9627",
+								},
+							],
+							selectedRows: [],
+
+							open: false,
+
+							toggleColumn(key) {
+								// Note: All td must have the same class name as the headings key!
+								let columns = document.querySelectorAll("." + key);
+
+								if (
+									this.$refs[key].classList.contains("hidden") &&
+									this.$refs[key].classList.contains(key)
+								) {
+									columns.forEach((column) => {
+										column.classList.remove("hidden");
+									});
+								} else {
+									columns.forEach((column) => {
+										column.classList.add("hidden");
+									});
+								}
+							},
+
+							getRowDetail($event, id) {
+								let rows = this.selectedRows;
+
+								if (rows.includes(id)) {
+									let index = rows.indexOf(id);
+									rows.splice(index, 1);
+								} else {
+									rows.push(id);
+								}
+							},
+
+							selectAllCheckbox($event) {
+								let columns = document.querySelectorAll(".rowCheckbox");
+
+								this.selectedRows = [];
+
+								if ($event.target.checked == true) {
+									columns.forEach((column) => {
+										column.checked = true;
+										this.selectedRows.push(parseInt(column.name));
+									});
+								} else {
+									columns.forEach((column) => {
+										column.checked = false;
+									});
+									this.selectedRows = [];
+								}
+							},
+						};
+					}
+				</script>
+			</div>
+		</div>
+	</body>
+</html>

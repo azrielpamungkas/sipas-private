@@ -1,0 +1,183 @@
+{% load static %}
+<!-- Component Sidebar -->
+
+<div
+    class="bg-indigo-100 md:flex flex-col md:flex-row md:min-h-screen w-full md:w-64 px-5 md:px-2 md:py-8"
+>
+    <div
+        @click.away="open = false"
+        class="flex flex-col w-full md:w-60 text-stone-700 bg-white dark-mode:text-stone-200 dark-mode:bg-gray-800 flex-shrink-0"
+        x-data="{ open: false }"
+    >
+        <!-- Header pada Sidebar -->
+        <div
+            class="bg-indigo-100 flexout-shrink-0 px-0 py-4 md:px-4 flex flex-row items-center justify-between no-print"
+        >
+            <div class="block md:text-center w-full py-2">
+                <a
+                    href="#"
+                    class="text-xl font-semibold tracking-custom rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline"
+                >
+                    <!-- Logo pada tampilan Tablet -->
+                    <img
+                        src="{% static 'Logo.png' %}"
+                        class="mx-auto" style="width: 50%;"
+                    />
+                    <!-- Kata kata -->
+                    <p class="md:hidden lg:block mt-3" style="font-family: 'Comfortaa'">SIPAS</p>
+                <span class="text-[16px]">SMKN 8 Semarang</span class="text-sm">
+
+                </a>
+                <!-- <hr class="bg-red w-full"> -->
+            </div>
+            <button
+                class="rounded-lg md:hidden focus:outline-none focus:shadow-outline"
+                @click="open = !open"
+            >
+                <svg fill="currentColor" viewBox="0 0 20 20" class="w-7 h-7">
+                    <path
+                        x-show="!open"
+                        fill-rule="evenodd"
+                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+                        clip-rule="evenodd"
+                    ></path>
+                    <path
+                        x-show="open"
+                        fill-rule="evenodd"
+                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                        clip-rule="evenodd"
+                    ></path>
+                </svg>
+            </button>
+        </div>
+        <!-- Menu -->
+        <nav
+            :class="{'flex': open, 'hidden': !open}"
+            class="bg-indigo-100 flex flex-grow md:flex flex-col px-4 pb-4 md:pb-0 md:gap-1 md:overflow-y-auto"
+        >
+            <!-- Dashboard -->
+            <a
+                        {% if request.resolver_match.url_name == 'home' %}
+
+                class="flex gap-2 px-6 py-3 mt-2 text-sm font-semibold text-stone-200 bg-indigo-700 rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-indigo-100 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-stone-200 hover:text-stone-700 focus:text-stone-800 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                {% else %}
+                class="flex gap-2 px-6 py-3 mt-2 text-sm font-semibold text-stone-500 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-indigo-100 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-stone-200 hover:text-stone-700 focus:text-stone-800 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+
+                            {% endif %}
+                href="{% url 'home' %}"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                >
+                    <path
+                        d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+                    />
+                </svg>
+                <p class="block lg:block">Dashboard</p>
+            </a>
+            <!-- Surat Masuk -->
+
+            <a
+                        {% if request.resolver_match.url_name == 'incoming-mail-list' or request.resolver_match.url_name == 'incoming-mail-detail' %}
+
+                class="flex gap-2 px-6 py-3 mt-2 text-sm font-semibold text-stone-200 bg-indigo-700 rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-indigo-100 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-stone-200 hover:text-stone-700 focus:text-stone-800 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                {% else %}
+                class="flex gap-2 px-6 py-3 mt-2 text-sm font-semibold text-stone-500 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-indigo-100 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-stone-200 hover:text-stone-700 focus:text-stone-800 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+
+                            {% endif %}
+
+                href="{% url 'incoming-mail-list' %}"
+            >
+
+
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                >
+                    <path
+                        d="M3 3a1 1 0 000 2h11a1 1 0 100-2H3zM3 7a1 1 0 000 2h7a1 1 0 100-2H3zM3 11a1 1 0 100 2h4a1 1 0 100-2H3zM15 8a1 1 0 10-2 0v5.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L15 13.586V8z"
+                    />
+                </svg>
+                <p class="block lg:block">Surat Masuk</p>
+            </a>
+            <!-- Surat Keluar -->
+            <a
+                                      {% if request.resolver_match.url_name == 'outgoing-mail-list' or request.resolver_match.url_name == 'outgoing-mail-detail' %}
+
+                class="flex gap-2 px-6 py-3 mt-2 text-sm font-semibold text-stone-200 bg-indigo-700 rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-indigo-100 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-stone-200 hover:text-stone-700 focus:text-stone-800 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                {% else %}
+                class="flex gap-2 px-6 py-3 mt-2 text-sm font-semibold text-stone-500 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-indigo-100 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-stone-200 hover:text-stone-700 focus:text-stone-800 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+
+                            {% endif %}
+                href="{% url 'outgoing-mail-list' %}"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                >
+                    <path
+                        d="M3 3a1 1 0 000 2h11a1 1 0 100-2H3zM3 7a1 1 0 000 2h5a1 1 0 000-2H3zM3 11a1 1 0 100 2h4a1 1 0 100-2H3zM13 16a1 1 0 102 0v-5.586l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 101.414 1.414L13 10.414V16z"
+                    />
+                </svg>
+                <p class="block lg:block">Surat Keluar</p>
+            </a>
+            <!-- Administrator -->
+            <a
+                        {% if request.resolver_match.url_name == 'admin-list' %}
+
+                class="flex gap-2 px-6 py-3 mt-2 text-sm font-semibold text-stone-200 bg-indigo-700 rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-indigo-100 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-stone-200 hover:text-stone-700 focus:text-stone-800 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                {% else %}
+                class="flex gap-2 px-6 py-3 mt-2 text-sm font-semibold text-stone-500 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-indigo-100 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-stone-200 hover:text-stone-700 focus:text-stone-800 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+
+                            {% endif %}
+                href="{% url 'admin-list'%}"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                >
+                    <path
+                        fill-rule="evenodd"
+                        d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zM4 4h3a3 3 0 006 0h3a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm2.5 7a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm2.45 4a2.5 2.5 0 10-4.9 0h4.9zM12 9a1 1 0 100 2h3a1 1 0 100-2h-3zm-1 4a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1z"
+                        clip-rule="evenodd"
+                    />
+                </svg>
+                <p class="block lg:block">Administrator</p>
+            </a>
+
+            <!-- logout -->
+            <a
+                data-modal-toggle="logout-modal"
+                class="flex gap-2 px-6 py-3 mt-2 text-sm font-semibold text-stone-500 bg-transparent {% block nav_logout %}{% endblock %} rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-indigo-100 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-stone-200 hover:text-stone-700 focus:text-stone-800 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                aria-hidden="true"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                    />
+                </svg>
+                <p class="block lg:block">Log Out</p>
+            </a>
+        </nav>
+
+        {% include 'modal/logout.html' %}
+    </div>
+</div>

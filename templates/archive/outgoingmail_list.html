@@ -1,0 +1,36 @@
+
+  {% extends 'base.html' %}
+  {% block title %}
+  {% endblock %}
+  {% block content %}
+  <table>
+    <tr>
+        <th>No</th>
+      <th>No Surat</th>
+      <th>Tanggal Surat</th>
+      <th>Kepada</th>
+      <th>Perihal</th>
+      <th>kode</th>
+      <th>file</th>
+    </tr>
+    {% for mail in object_list %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+      <td>{{mail.id_mail}}</td>
+      <td>{{mail.date}}</td>
+      <td>{{mail.to_send}}</td>
+      <td>{{mail.regarding}}</td>
+      <td>{{mail.code}}</td>
+      {% load filename %}
+
+      <td><a target="_blank" href="/{{mail.file_or_image}}">{{mail.file_or_image | filename}}</a></td>
+
+    </tr>
+    {% empty %}
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+    {% endfor %}
+  </table>
+  {% endblock %}

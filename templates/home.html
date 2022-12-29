@@ -1,0 +1,76 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="block md:flex max-w-screen-2xl mx-auto">
+    {% include 'nav.html' %}
+    <!-- Main Content -->
+    <div class="antialiased h-screen w-full text-slate-700 overflow-y-scroll">
+        <div
+            class="w-full h-44 bg-cover bg-center"
+            src=""
+            style="
+                background-image: url('{% static 'login.jpeg' %}');
+                background-position: top;
+                background-position-y: 4.5%;
+            "
+        ></div>
+        <div class="container mx-auto py-2 px-20" x-data="datatables()" x-cloak>
+            <h3 class="text-xl my-5 font-bold">IDENTITAS SEKOLAH</h3>
+            <div>
+                <ul class="list-none">
+                    <li>Alamat: Jalan Pandanaran II No.12</li>
+                    <li>
+                        Kota/Kec/Keluaran: Kota Semarang, Semarang Selatan,
+                        Mugassari
+                    </li>
+                    <li>Kode Pos: 50249</li>
+                    <li>No Telp: (024) 8312190</li>
+                    <li>Email Sekolah: smkn8_semarang@yahoo.com</li>
+                    <li>Web Sekolah: www.smkn8semarang.sch.id</li>
+                </ul>
+            </div>
+
+            <h3 class="text-xl font-bold my-5">VISI</h3>
+            <p>
+                Visi : Unggul dalam IPTEK, berkarakter, berdaya saing dan
+                berwawasan lingkungan
+            </p>
+            <h3 class="text-xl font-bold my-5">MISI</h3>
+            <ol class="mx-5">
+                <li>
+                    Mengembangkan pembelajaran berbasis multimedia dan teknologi
+                </li>
+                <li>
+                    Melaksanakan pembelajaran berbasis CBT (Competency Based
+                    Training)
+                </li>
+                <li>
+                    Menciptakan iklim belajar yang berkarakter pada norma agama
+                    dan budaya bangsa
+                </li>
+                <li>
+                    Menciptakan pembelajaran berbasis kewirausahaan untuk
+                    membentuk pribadi mandiri dan tangguh dalam berkompetisi
+                </li>
+                <li>
+                    Menciptakan lingkungan yang nyaman, sehat, bersih dan hijau
+                </li>
+                <li>
+                    Meningkatkan kualitas pendidik, khususnya guru mata
+                    pelajaran produktif melalui OJT (On Job Training) agar
+                    memiliki sertifikat profesi dan berpengalaman kerja di
+                    industri pada bidang yang relevan minimal 1 bulan
+                </li>
+                <li>
+                    Menyediakan fasilitas pendidikan yang mendukung pencapaian
+                    kompetensi tamatan, baik milik sendiri maupun melalui
+                    kerjasama dengan pihak lain (Out Sourcing)
+                </li>
+                <li>
+                    Menerapkan standar ISO dalam sistem manajemen mutu secara
+                    konsisten
+                </li>
+            </ol>
+        </div>
+    </div>
+    {% endblock %}
+</div>

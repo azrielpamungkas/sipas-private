@@ -1,0 +1,542 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="block md:flex max-w-screen-2xl mx-auto">
+	{% include "nav.html" %}
+	<div class="antialiased h-screen w-full">
+		<style>
+			[x-cloak] {
+				display: none;
+			}
+
+			[type="checkbox"] {
+				box-sizing: border-box;
+				padding: 0;
+			}
+
+			.form-checkbox {
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				appearance: none;
+				-webkit-print-color-adjust: exact;
+				color-adjust: exact;
+				display: inline-block;
+				vertical-align: middle;
+				background-origin: border-box;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				flex-shrink: 0;
+				color: currentColor;
+				background-color: #fff;
+				border-color: #e2e8f0;
+				border-width: 1px;
+				border-radius: 0.25rem;
+				height: 1.2em;
+				width: 1.2em;
+			}
+
+			.form-checkbox:checked {
+				background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
+				border-color: transparent;
+				background-color: currentColor;
+				background-size: 100% 100%;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+		</style>
+		<div class="container mx-auto py-6 px-4" x-data="datatables()" x-cloak>
+			<!-- Heading -->
+			<div class="flex border-b border-b md:py-4 md:py-4 mb-10 mb-10">
+				<h1 class="text-3xl">Surat Keluar</h1>
+				<h1 id="currentDateTime" class="text-[17px] ml-auto"></h1>
+			</div>
+			<!-- popup Row Selected -->
+			<div
+				x-show="selectedRows.length"
+				class="bg-indigo-100 fixed top-0 left-0 right-0 z-40 w-full shadow"
+			>
+				<div class="container mx-auto px-4 py-4">
+					<div class="flex md:items-center">
+						<div class="mr-4 flex-shrink-0">
+							<svg
+								class="h-8 w-8 text-indigo-600"
+								viewBox="0 0 20 20"
+								fill="currentColor"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+									clip-rule="evenodd"
+								/>
+							</svg>
+						</div>
+
+						<div
+							x-html="selectedRows.length + ' rows are selected'"
+							class="text-indigo-800 text-lg"
+						></div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Kolom paling atas (search, filter) -->
+			<div class="mb-4 flex justify-between items-center gap-4">
+				<div class="flex-1 pr-4">
+					<div class="relative md:w-1/3">
+						<form method="get" action="{% url 'outgoing-search' %}">
+							<input
+								type="search"
+								name="q"
+								class="w-full pl-10 pr-4 py-2 rounded-lg shadow focus:outline-none focus:shadow-outline text-gray-600 font-medium border-none"
+								placeholder="Cari Surat disini..."
+							/>
+						</form>
+						<!-- KOlom SEarch -->
+						<div
+							class="absolute top-0 left-0 inline-flex items-center p-2"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="w-6 h-6 text-gray-400"
+								viewBox="0 0 24 24"
+								stroke-width="2"
+								stroke="currentColor"
+								fill="none"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<rect
+									x="0"
+									y="0"
+									width="24"
+									height="24"
+									stroke="none"
+								></rect>
+								<circle cx="10" cy="10" r="7" />
+								<line x1="21" y1="21" x2="15" y2="15" />
+							</svg>
+						</div>
+					</div>
+				</div>
+
+				<!-- Tambah -->
+				<div>
+					<div
+						data-modal-toggle="add-data-modal"
+						class="shadow rounded-lg flex bg-indigo-700 text-white rounded-md"
+					>
+						<span
+							class="text-slate-100 px-3 py-3 flex items-center"
+						>
+							<button
+								href=""
+								class="inline-flex gap-2"
+								type="button"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="currentColor"
+									class="w-4 h-2/5 my-auto"
+								>
+									<path
+										fill-rule="evenodd"
+										d="M12 2.25a.75.75 0 01.75.75v8.25H21a.75.75 0 010 1.5h-8.25V21a.75.75 0 01-1.5 0v-8.25H3a.75.75 0 010-1.5h8.25V3a.75.75 0 01.75-.75z"
+										clip-rule="evenodd"
+									/>
+								</svg>
+
+								<p class="hidden md:block text-sm">
+									Tambah Data
+								</p>
+							</button>
+						</span>
+					</div>
+				</div>
+
+				<!-- Filter -->
+				<div>
+					<div class="shadow rounded-lg flex">
+						<div class="relative">
+							<button
+								@click.prevent="open = !open"
+								class="rounded-lg inline-flex items-center bg-white hover:text-slate-700 focus:outline-none focus:shadow-outline text-gray-500 font-semibold py-2 px-2 md:px-4"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="w-6 h-6 md:hidden"
+									viewBox="0 0 24 24"
+									stroke-width="2"
+									stroke="currentColor"
+									fill="none"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<rect
+										x="0"
+										y="0"
+										width="24"
+										height="24"
+										stroke="none"
+									></rect>
+									<path
+										d="M5.5 5h13a1 1 0 0 1 0.5 1.5L14 12L14 19L10 16L10 12L5 6.5a1 1 0 0 1 0.5 -1.5"
+									/>
+								</svg>
+								<span class="hidden md:block">Display</span>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="w-5 h-5 ml-1"
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									stroke-width="2"
+									stroke="currentColor"
+									fill="none"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<rect
+										x="0"
+										y="0"
+										width="24"
+										height="24"
+										stroke="none"
+									></rect>
+									<polyline points="6 9 12 15 18 9" />
+								</svg>
+							</button>
+
+							<div
+								x-show="open"
+								@click.away="open = false"
+								class="z-40 absolute top-0 right-0 w-40 bg-white rounded-lg shadow-lg mt-12 -mr-1 block py-1 overflow-hidden"
+							>
+								<template x-for="heading in headings">
+									<label
+										class="flex justify-start items-center text-truncate hover:bg-gray-100 px-4 py-2"
+									>
+										<div class="text-indigo-600 mr-3">
+											<input
+												type="checkbox"
+												class="form-checkbox focus:outline-none focus:shadow-outline"
+												checked
+												@click="toggleColumn(heading.key)"
+											/>
+										</div>
+										<div
+											class="select-none text-gray-700"
+											x-text="heading.value"
+										></div>
+									</label>
+								</template>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+						<span class="pb-10 text-slate-500">				Jumlah surat ditemukan: {{count}}</span>
+			<!-- Table -->
+			<div
+				class="overflow-x-auto bg-white rounded-lg shadow overflow-y-auto relative"
+			>
+				<table
+					class="border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative"
+				>
+					<!-- Table Heading - Judul ygy -->
+					<thead>
+						<tr class="text-left">
+							<th
+								class="py-2 px-2 sticky top-0 border-b border-gray-200 bg-gray-100"
+							>
+								<label
+									class="text-indigo-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer"
+								>
+									<input
+										type="checkbox"
+										class="form-checkbox focus:outline-none focus:shadow-outline"
+										@click="selectAllCheckbox($event);"
+									/>
+								</label>
+							</th>
+							<template x-for="heading in headings">
+								<th
+									class="bg-gray-100 sticky top-0 border-b border-gray-200 px-3 py-2 text-gray-600 font-bold tracking-custom uppercase text-xs"
+									x-text="heading.value"
+									:x-ref="heading.key"
+									:class="{ [heading.key]: true }"
+								></th>
+							</template>
+						</tr>
+					</thead>
+					<!-- Table Body -->
+					<tbody>
+						{% for obj in object_list %}
+						<tr>
+							<td
+								class="border-dashed border-t border-gray-200 px-2"
+							>
+								<label
+									class="text-indigo-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer"
+								>
+									<input
+										type="checkbox"
+										class="form-checkbox rowCheckbox focus:outline-none focus:shadow-outline"
+										:name="user.nomerSurat"
+										@click="getRowDetail($event, user.nomerSurat)"
+									/>
+								</label>
+							</td>
+
+							<!-- No Surat Asal -->
+							<td
+								class="border-dashed border-t border-gray-200 nomerSurat"
+							>
+								<span
+									class="text-gray-700 px-3 py-3 flex items-center"
+									x-text="user.nomerSurat"
+									>{{obj.id_mail}}</span
+								>
+							</td>
+
+							<!-- TGL Surat -->
+							<td
+								class="border-dashed border-t border-gray-200 tglSurat"
+							>
+								<span
+									class="text-gray-700 px-3 py-3 flex items-center"
+									x-text="user.tglSurat"
+									>{{obj.date}}</span
+								>
+							</td>
+							<!-- kepada -->
+							<td
+								class="border-dashed border-t border-gray-200 kepada"
+							>
+								<span
+									class="text-gray-700 px-3 py-3 flex items-center"
+									x-text="user.kepada"
+									>{{obj.to_send}}</span
+								>
+							</td>
+							<!-- Perihal -->
+							<td
+								class="border-dashed border-t border-gray-200 perihal"
+							>
+								<span
+									class="text-gray-700 px-3 py-3 flex items-center"
+									x-text="user.perihal"
+									>{{obj.regarding|truncatechars_html:25}}</span
+								>
+							</td>
+							<!-- Email Address -->
+							<td
+								class="border-dashed border-t border-gray-200 kodeKeluar"
+							>
+								<span
+									class="text-gray-700 px-3 py-3 flex items-center"
+									x-text="user.kodeKeluar"
+									>{{obj.code}}</span
+								>
+							</td>
+
+							<!-- Edit - Popup Modal -->
+							<td
+								class="border-dashed border-t border-gray-200 blankSpace"
+							>
+								<span
+									class="text-gray-700 px-3 py-3 flex items-center gap-2"
+								>
+									<button
+										href=""
+										class="hover:underline text-blue-600"
+										type="button"
+										data-modal-toggle="{{obj.id_mail}}"
+									>
+										Edit
+									</button>
+									<a
+										href="{% url 'outgoing-mail-detail' pk=obj.pk %}"
+										class="hover:underline text-blue-600"
+									>
+										Detail
+									</a>
+													<form
+					action="{% url 'outgoing-mail-delete' pk=obj.id %}"
+					method="post"
+				>
+					{% csrf_token %}
+		<button type="submit"
+										class="hover:underline text-blue-600">
+									<svg style="width:24px;height:24px" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8.46,11.88L9.87,10.47L12,12.59L14.12,10.47L15.53,11.88L13.41,14L15.53,16.12L14.12,17.53L12,15.41L9.88,17.53L8.47,16.12L10.59,14L8.46,11.88M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z" />
+</svg>
+									</button>
+				</form>
+								</span>
+							</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+			{# OPEN PAGINATION #}
+			<nav class="text-center mt-12">
+				<ul class="inline-flex items-center -space-x-px list-none">
+					{% if page_obj.has_previous %}
+					<li>
+						<a
+								href="?page={{ page_obj.previous_page_number }}&q={{query}}"
+							class="block py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+						>
+							<span class="sr-only">Previous</span>
+							<svg
+								class="w-5 h-5"
+								fill="currentColor"
+								viewBox="0 0 20 20"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+									clip-rule="evenodd"
+								></path>
+							</svg>
+						</a>
+					</li>
+
+					{% endif %}
+					<li>
+						<a
+							href="#"
+							class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+							>{{ page_obj.number }} of
+							{{page_obj.paginator.num_pages}}</a
+						>
+					</li>
+					{% if page_obj.has_next %}
+					<li>
+						<a
+								href="?page={{ page_obj.next_page_number }}&q={{query}}"
+							class="block py-2 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+						>
+							<span class="sr-only">Next</span>
+							<svg
+								class="w-5 h-5"
+								fill="currentColor"
+								viewBox="0 0 20 20"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+									clip-rule="evenodd"
+								></path>
+							</svg>
+						</a>
+					</li>
+					{% endif %}
+				</ul>
+			</nav>
+			{# END PAGINATION #}
+		</div>
+	</div>
+</div>
+
+{% include "modal/outgoing.html" %}
+
+<script type="text/javascript">
+		function datatables() {
+		return {
+			headings: [
+				{
+					key: "nomerSurat",
+					value: "No Surat",
+				},
+				{
+					key: "tglSurat",
+					value: "Tgl. Surat",
+				},
+				{
+					key: "kepada",
+					value: "kepada",
+				},
+				{
+					key: "perihal",
+					value: "perihal",
+				},
+				{
+					key: "kodeKeluar",
+					value: "Kode",
+				},
+				{
+					key: "blankSpace",
+					value: " ",
+				},
+			],
+			users: [
+				{% for obj in object_list %}
+				{
+					nomerSurat: "{{obj.id_mail}}",
+					tglSurat: "{{obj.date}}",
+					kepada: "{{obj.to_send}}",
+					perihal: "{{obj.regarding}}",
+					kodeKeluar: "{{obj.code}}",
+				},
+				{% endfor %}
+
+			],
+			selectedRows: [],
+
+			open: false,
+
+			toggleColumn(key) {
+				// Note: All td must have the same class name as the headings key!
+				let columns = document.querySelectorAll("." + key);
+
+				if (
+					this.$refs[key].classList.contains("hidden") &&
+					this.$refs[key].classList.contains(key)
+				) {
+					columns.forEach((column) => {
+						column.classList.remove("hidden");
+					});
+				} else {
+					columns.forEach((column) => {
+						column.classList.add("hidden");
+					});
+				}
+			},
+
+			getRowDetail($event, id) {
+				let rows = this.selectedRows;
+
+				if (rows.includes(id)) {
+					let index = rows.indexOf(id);
+					rows.splice(index, 1);
+				} else {
+					rows.push(id);
+				}
+			},
+
+			selectAllCheckbox($event) {
+				let columns = document.querySelectorAll(".rowCheckbox");
+
+				this.selectedRows = [];
+
+				if ($event.target.checked == true) {
+					columns.forEach((column) => {
+						column.checked = true;
+						this.selectedRows.push(parseInt(column.name));
+					});
+				} else {
+					columns.forEach((column) => {
+						column.checked = false;
+					});
+					this.selectedRows = [];
+				}
+			},
+		};
+	}
+</script>
+{% endblock %}

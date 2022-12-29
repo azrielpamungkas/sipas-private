@@ -1,0 +1,8 @@
+@font-face {
+      font-family: "Lato";
+      src: url("../asset/fonts/Lato-Regular.ttf");
+    }
+    
+.cekbang {
+  border: 1px solid red;
+}
